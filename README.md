@@ -69,7 +69,7 @@ Then navigate to `http://localhost:8000` in your browser.
 1. Fork this repository
 2. Enable GitHub Pages in repository settings
 3. Select the main branch as the source
-4. Access your deployment at `https://xsukax.github.io/xsukax-Mermaid-Diagram-Converter`
+4. Access your deployment at `https://yourusername.github.io/xsukax-Mermaid-Diagram-Converter`
 
 ## 📖 Usage Guide
 
