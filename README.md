@@ -175,12 +175,6 @@ This project is licensed under the GNU General Public License v3.0.
 
 Contributions, issues, and feature requests are welcome. Feel free to check the [issues page](https://github.com/xsukax/xsukax-Mermaid-Diagram-Converter/issues) if you want to contribute.
 
-## 🔗 Resources
-
-- [Mermaid Documentation](https://mermaid.js.org/)
-- [Mermaid Live Editor](https://mermaid.live/)
-- [GitHub Repository](https://github.com/xsukax/xsukax-Mermaid-Diagram-Converter)
-
 ---
 
 **Built with privacy in mind** 🔐 | **No servers, no tracking, no compromise**
