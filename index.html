@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>xsukax Mermaid Diagram Converter</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--bg:#ffffff;--fg:#24292f;--border:#d0d7de;--input-bg:#f6f8fa;--btn-bg:#f6f8fa;--btn-hover:#e9ecef;--shadow:rgba(0,0,0,0.08);--status-bg:#dff6dd;--status-fg:#0f5132;}
+[data-theme="dark"]{--bg:#0d1117;--fg:#c9d1d9;--border:#30363d;--input-bg:#161b22;--btn-bg:#21262d;--btn-hover:#30363d;--shadow:rgba(0,0,0,0.4);--status-bg:#1a472a;--status-fg:#aff5b4;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh;display:flex;flex-direction:column;}
+.header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--border);background:var(--bg);}
+.header h1{font-size:18px;font-weight:600;}
+.theme-toggle{background:var(--btn-bg);border:1px solid var(--border);border-radius:6px;padding:6px 12px;cursor:pointer;font-size:14px;color:var(--fg);}
+.theme-toggle:hover{background:var(--btn-hover);}
+.container{flex:1;display:flex;flex-direction:column;padding:20px;gap:16px;width:100%;margin:0 auto;}
+.editor{display:flex;flex-direction:column;gap:8px;}
+.editor label{font-size:14px;font-weight:600;}
+.editor textarea{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,monospace;font-size:13px;padding:12px;border:1px solid var(--border);border-radius:6px;background:var(--input-bg);color:var(--fg);resize:vertical;min-height:200px;line-height:1.5;}
+.editor textarea:focus{outline:2px solid #0969da;outline-offset:0;}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;}
+.btn{background:var(--btn-bg);border:1px solid var(--border);border-radius:6px;padding:6px 14px;cursor:pointer;font-size:14px;color:var(--fg);font-weight:500;}
+.btn:hover{background:var(--btn-hover);}
+.btn:active{transform:scale(0.98);}
+.btn-primary{background:#2da44e;color:#fff;border-color:#2da44e;}
+.btn-primary:hover{background:#2c974b;}
+.preview-area{border:1px solid var(--border);border-radius:6px;padding:20px;background:var(--input-bg);min-height:300px;overflow:auto;box-shadow:inset 0 1px 2px var(--shadow);display:flex;justify-content:center;align-items:center;}
+.preview-area svg{max-width:none;height:auto;}
+.status{display:none;padding:10px 16px;border-radius:6px;background:var(--status-bg);color:var(--status-fg);font-size:14px;border:1px solid currentColor;opacity:0;transition:opacity 0.3s;}
+.status.show{display:block;opacity:1;}
+.footer{padding:12px;text-align:center;font-size:12px;color:#57606a;border-top:1px solid var(--border);}
+@media(max-width:768px){.container{padding:12px;}.toolbar{flex-direction:column;}.btn{width:100%;}}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>🧜 xsukax Mermaid Diagram Converter</h1>
+<button class="theme-toggle" id="themeBtn">🌙 Dark</button>
+</div>
+<div class="container">
+<div class="editor">
+<label for="code">Mermaid Code</label>
+<textarea id="code" placeholder="graph TD&#10;  A-->B&#10;  B-->C" spellcheck="false"></textarea>
+</div>
+<div class="toolbar">
+<button class="btn btn-primary" id="renderBtn">Render</button>
+<button class="btn" id="exportPng">Export PNG</button>
+<button class="btn" id="exportSvg">Export SVG</button>
+<button class="btn" id="copySvg">Copy SVG</button>
+<button class="btn" id="clearBtn">Clear</button>
+</div>
+<div class="status" id="status"></div>
+<div class="preview-area" id="preview"></div>
+</div>
+<div class="footer">Press Ctrl/Cmd+Enter to render • xsukax Mermaid Converter</div>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const theme=$('themeBtn'),code=$('code'),renderBtn=$('renderBtn'),exportPng=$('exportPng'),exportSvg=$('exportSvg'),copySvg=$('copySvg'),clearBtn=$('clearBtn'),status=$('status'),preview=$('preview');
+let currentTheme=localStorage.getItem('theme')||'light';
+const setTheme=t=>{document.documentElement.setAttribute('data-theme',t);theme.textContent=t==='light'?'🌙 Dark':'☀️ Light';localStorage.setItem('theme',t);if(window.mermaid){mermaid.initialize({theme:t==='dark'?'dark':'default',startOnLoad:false,securityLevel:'loose',fontFamily:'monospace'});}};
+setTheme(currentTheme);
+theme.onclick=()=>{currentTheme=currentTheme==='light'?'dark':'light';setTheme(currentTheme);if(preview.querySelector('svg'))render();};
+const showStatus=(msg,dur=2000)=>{status.textContent=msg;status.classList.add('show');setTimeout(()=>status.classList.remove('show'),dur);};
+const render=async()=>{const src=code.value.trim();if(!src){showStatus('Enter Mermaid code first');return;}try{const{svg}=await mermaid.render('gen',src);preview.innerHTML=svg;const svgEl=preview.querySelector('svg');if(svgEl){svgEl.removeAttribute('style');svgEl.style.display='block';const titleText=svgEl.querySelector('text[font-weight="bold"]');if(titleText){const vb=svgEl.viewBox.baseVal;const centerX=vb.x+vb.width/2;titleText.setAttribute('x',centerX);titleText.setAttribute('text-anchor','middle');}}showStatus('✓ Rendered');}catch(e){showStatus('✗ '+e.message);console.error(e);}};
+renderBtn.onclick=render;
+code.onkeydown=e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();render();}};
+const getSvg=()=>{const s=preview.querySelector('svg');if(!s){showStatus('Render diagram first');return null;}return s;};
+exportPng.onclick=()=>{const s=getSvg();if(!s)return;const w=s.width.baseVal.value||800,h=s.height.baseVal.value||600;const xml=new XMLSerializer().serializeToString(s);const url='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(xml);const img=new Image();img.onload=()=>{const c=document.createElement('canvas'),ctx=c.getContext('2d');c.width=w*2;c.height=h*2;ctx.scale(2,2);ctx.drawImage(img,0,0,w,h);c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='diagram.png';a.click();URL.revokeObjectURL(a.href);showStatus('✓ PNG downloaded');});};img.src=url;};
+exportSvg.onclick=()=>{const s=getSvg();if(!s)return;const xml=new XMLSerializer().serializeToString(s);const b=new Blob([xml],{type:'image/svg+xml'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='diagram.svg';a.click();URL.revokeObjectURL(a.href);showStatus('✓ SVG downloaded');};
+copySvg.onclick=()=>{const s=getSvg();if(!s)return;const xml=new XMLSerializer().serializeToString(s);navigator.clipboard.writeText(xml).then(()=>showStatus('✓ SVG copied')).catch(()=>showStatus('✗ Copy failed'));};
+clearBtn.onclick=()=>{code.value='';preview.innerHTML='';showStatus('✓ Cleared');};
+if(!window.mermaid){showStatus('✗ Mermaid library not loaded',5000);}
+})();
+</script>
+</body>
+</html>
